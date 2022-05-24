@@ -1,3 +1,25 @@
 * {
     margin: 0px;
 }
+
+.login {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    background-color: black;
+}
+
+img {
+    height : 400px;
+    width: 100%;
+}
+
+.login > a {
+    margin-top: -10px;
+    background-color: #1db954;
+    text-decoration: none;
+    padding: 20px;
+    border-radius: 99px;
+    color: white;
+    font-family: 'BIZ UDPGothic', sans-serif;
+}
