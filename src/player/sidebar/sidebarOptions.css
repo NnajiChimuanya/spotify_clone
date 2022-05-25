@@ -1,8 +1,9 @@
 .sidebarOption {
     color: gray;
-    height: 30px;
+    height: 40px;
     cursor: pointer;
     transition: 250ms color ease-in;
+    display: flex;
 }
 
 .sidebarOption:hover {
