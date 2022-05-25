@@ -5,6 +5,8 @@ import SpotifyWebApi from 'spotify-web-api-js';
 import { DataLayerContext } from '.';
 import reducer from './reducer';
 
+import Player from './player/Player';
+
 
 
 
@@ -50,7 +52,7 @@ function App() {
 
   return (
     <>
-     { token ? <h2>Youre login in Now</h2> : < Login />}
+     { token ? < Player spotify={spotify}/> : < Login />}
 
      
     </>
