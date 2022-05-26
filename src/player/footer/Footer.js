@@ -41,7 +41,7 @@ const Footer = () => {
 
                     <Grid item>
                         < Box width={100}>
-                        < Slider size="small" defaultValue={70} aria-label="small" valueLabelDisplay="auto" />
+                        < Slider className="slider" size="small" defaultValue={70} aria-label="small" valueLabelDisplay="auto" />
                         </Box>
                     </Grid>
                    

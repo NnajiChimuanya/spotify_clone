@@ -5,12 +5,12 @@ import Body from "./body/Body"
 import Footer from "./footer/Footer"
 
 
-const Player = () => {
+const Player = ( { spotify }) => {
   return (
    <div className="player">
       <div className="player-body">
         < Sidebar />
-        < Body />
+        < Body spotify={spotify}/>
       </div>
       < Footer/>
    </div>
