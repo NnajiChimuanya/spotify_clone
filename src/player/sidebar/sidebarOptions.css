@@ -4,8 +4,24 @@
     cursor: pointer;
     transition: 250ms color ease-in;
     display: flex;
+    align-items: center;
+}
+
+.sidebarOption > h4 {
+    margin-top: 5px;
 }
 
 .sidebarOption:hover {
     color: white;
+}
+
+.sidebarIcon {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.sidebarOption > p {
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 14px;
 }

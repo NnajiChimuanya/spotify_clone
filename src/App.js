@@ -1,11 +1,12 @@
-import React, { useState, useEffect, useContext, useReducer } from 'react';
+import React, { useState, useEffect } from 'react';
 import Login from "./login/Login";
 import { getTokenFromUrl } from "./spotify"
 import SpotifyWebApi from 'spotify-web-api-js';
-import { DataLayerContext } from '.';
-import reducer from './reducer';
 
 import Player from './player/Player';
+import "./app.css"
+
+import { useDataLayerValue } from './Datalayer';
 
 
 
@@ -13,25 +14,24 @@ import Player from './player/Player';
 const spotify = new SpotifyWebApi()
 
 function App() {
-  const [token, setToken] = useState("")
+  const [token, setToken] = useState(null)
 
-  const {user, token_} = useContext(DataLayerContext)
-  const [state, dispatch] = useReducer(reducer, {user, token_})
+ const [{user, token_, playlists}, dispatch] = useDataLayerValue()
  
   useEffect(() => {
     const obj = getTokenFromUrl()
     window.location.hash = ""
-    const _token = obj.access_token
+    const token_ = obj.access_token
 
-    if(_token) {
-      setToken(_token)
+    if(token_) {
+      setToken(token_)
 
       dispatch({
         type : "SET_TOKEN",
-        token_ : _token
+        token_ : token_
       })
 
-      spotify.setAccessToken(_token)
+      spotify.setAccessToken(token_)
 
       spotify.getMe().then(user => {
         dispatch({
@@ -40,15 +40,17 @@ function App() {
         })
         
       })
+
+      spotify.getUserPlaylists().then(playlists => {
+        dispatch({
+          type : "SET_PLAYLISTS",
+          playlists : playlists
+        })
+      })
+     
     }
   
   }, [])
-
-  console.log(token)
-  console.log(state)
-  
-  
- 
 
   return (
     <>

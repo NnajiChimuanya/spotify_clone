@@ -1,17 +1,17 @@
-import React, { createContext } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { initialState } from './reducer';
-
-export const DataLayerContext = createContext({})
+import reducer from './reducer';
+import { DataLayer} from "./Datalayer"
 
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <DataLayerContext.Provider value={initialState}>
+    <DataLayer reducer={reducer} initialState={initialState}>
       <App />
-    </DataLayerContext.Provider>
+    </DataLayer>
   </React.StrictMode>,
   document.getElementById('root')
 );
