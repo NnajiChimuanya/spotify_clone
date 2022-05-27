@@ -1,7 +1,22 @@
 .body {
     height: 100vh;
     flex: 0.8;
-    background: linear-gradient(transparent, rgb(91,87,110), rgba(0,0,0,1));
+    background: linear-gradient(transparent, rgb(50,87,110), rgba(1,0,0,1));
     padding: 20px;
     color: white;
+    
+}
+.body-info {
+    display: flex;
+    align-items: flex-end;
+    padding: 10px;
+}
+
+.body-info-text {
+    flex: 1;
+}
+
+.body-info-text > h2 {
+    margin-bottom: 10px;
+    font-size: 48px;
 }

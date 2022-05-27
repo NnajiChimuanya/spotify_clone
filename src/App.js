@@ -52,6 +52,8 @@ function App() {
   
   }, [])
 
+  console.log({user, token_, playlists},)
+
   return (
     <>
      { token ? < Player spotify={spotify}/> : < Login />}
