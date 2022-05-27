@@ -16,7 +16,7 @@ const spotify = new SpotifyWebApi()
 function App() {
   const [token, setToken] = useState(null)
 
- const [{user, token_, playlists, discover_weekly}, dispatch] = useDataLayerValue()
+ const [{user, token_, playlists, discover_weekly, currently_playing}, dispatch] = useDataLayerValue()
  
   useEffect(() => {
     const obj = getTokenFromUrl()
@@ -52,6 +52,13 @@ function App() {
         dispatch({
           type : "SET_DISCOVER_WEEKLY",
           discover_weekly : response
+        })
+      })
+
+      spotify.getMyCurrentPlayingTrack().then((response) => {
+        dispatch({
+          type : "SET_CURRENTLY_PLAYING",
+          currently_playing : response
         })
       })
      

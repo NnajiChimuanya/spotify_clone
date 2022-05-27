@@ -19,6 +19,7 @@
 .header-left > input {
     border: none;
     width: 100%;
+    outline-width: 0px;
 }
 
 
