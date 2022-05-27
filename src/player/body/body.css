@@ -12,6 +12,13 @@
     padding: 10px;
 }
 
+.body-info > img {
+    height: 20vw;
+    margin: 0 20px;
+    box-shadow: 0 4px 60px rgba(0,0,0,0.5);
+    object-fit: contain;
+}
+
 .body-info-text {
     flex: 1;
 }
@@ -19,4 +26,8 @@
 .body-info-text > h2 {
     margin-bottom: 10px;
     font-size: 48px;
+}
+
+.body-info-text > p{
+    font-size: 14px;
 }

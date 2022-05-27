@@ -11,7 +11,7 @@
     display: flex;
     align-items: center;
     padding: 10px;
-    flex: 0.4;
+    flex: 0.5;
     min-width: 70px;
     height: 15px;
 }
@@ -25,7 +25,7 @@
 .header-right {
     display: flex;
     align-items: center;
-    margin-left: auto;
+    
 }
 
 .header-right > h4 {
