@@ -7,6 +7,7 @@ import Player from './player/Player';
 import "./app.css"
 
 import { useDataLayerValue } from './Datalayer';
+import { initialState } from './reducer';
 
 
 
@@ -66,7 +67,7 @@ function App() {
   
   }, [])
 
-  console.log({user, token_, playlists, discover_weekly, currently_playing},)
+  
 
   return (
     <>

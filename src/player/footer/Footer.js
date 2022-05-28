@@ -6,12 +6,63 @@ import ShuffleIcon from '@mui/icons-material/Shuffle';
 import RepeatIcon from '@mui/icons-material/Repeat';
 import { Grid, Slider, Box } from "@material-ui/core"
 import PlaylistPlayIcon from '@mui/icons-material/PlaylistPlay';
+import PauseCircleFilledIcon from '@mui/icons-material/PauseCircleFilled';
 import VolumeDownIcon from '@mui/icons-material/VolumeDown';
 import { useDataLayerValue } from "../../Datalayer";
+import React, { useState,useEffect } from "react"
+import SpotifyWebApi from 'spotify-web-api-js';
+import { fabClasses } from "@mui/material";
+const spotify = new SpotifyWebApi()
 
 
 const Footer = () => {
-const [{currently_playing}, dispatch] = useDataLayerValue()
+    const [{currently_playing}, dispatch] = useDataLayerValue()
+    const [playing, setPlaying] = useState(false)
+ 
+
+    useEffect(() => {
+       let run = false
+       
+        spotify.getMyCurrentPlayingTrack().then((response) => {
+            dispatch({
+                type : "SET_CURRENTLY_PLAYING",
+                currently_playing : response
+            })
+        })  
+      
+       
+    }, [currently_playing])
+
+    const handlePlay = () => {
+        spotify.play().then(() => {
+            console.log("Playing")
+        })
+        setPlaying(true)
+    }
+
+    const handlePause = () => {
+        spotify.pause().then(() => {
+            console.log("pause")
+        })
+
+        setPlaying(false)
+    }
+
+   const handleNext = () => {
+       spotify.skipToNext().then(() => {
+           console.log("Skipped to next")
+       })
+   }
+
+   const handlePrevious= () => {
+    spotify.skipToPrevious().then(() => {
+        console.log("Skipped to Previous")
+    })
+}
+
+ 
+
+
 
     return (
         <div className="footer">
@@ -28,9 +79,13 @@ const [{currently_playing}, dispatch] = useDataLayerValue()
 
             <div className="footer-center">
                 <ShuffleIcon className="footer-green"/>
-                <SkipPreviousOutlinedIcon className="footer-icon" />
-                <PlayCircleOutlinedIcon fontSize="large" className="footer-icon" />
-                <SkipNextOutlinedIcon className="footer-icon" />
+                <SkipPreviousOutlinedIcon onClick={handlePrevious} className="footer-icon" />
+                {
+                    playing ? < PauseCircleFilledIcon onClick={handlePause} fontSize="large" className="footer-icon"/> 
+                    : <PlayCircleOutlinedIcon onClick={handlePlay} fontSize="large" className="footer-icon" />
+                }
+
+                <SkipNextOutlinedIcon onClick={handleNext} className="footer-icon" />
                 <RepeatIcon className="footer-green"/>
             </div>
 
@@ -46,7 +101,7 @@ const [{currently_playing}, dispatch] = useDataLayerValue()
 
                     <Grid item>
                         < Box width={100}>
-                        < Slider className="slider" size="small" defaultValue={70} aria-label="small" valueLabelDisplay="auto" />
+                        < Slider   className="slider" size="small" defaultValue={70} aria-label="small" valueLabelDisplay="auto" />
                         </Box>
                     </Grid>
                    

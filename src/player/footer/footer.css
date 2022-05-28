@@ -46,6 +46,10 @@
     color: green;
 }
 
+.footer-green,
+.footer-icon:active {
+    color: green
+}
 
 .footer-icon:hover,
 .footer-green:hover {
