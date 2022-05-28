@@ -18,6 +18,7 @@ const spotify = new SpotifyWebApi()
 const Footer = () => {
     const [{currently_playing}, dispatch] = useDataLayerValue()
     const [playing, setPlaying] = useState(false)
+  
  
 
     useEffect(() => {
@@ -55,13 +56,10 @@ const Footer = () => {
    }
 
    const handlePrevious= () => {
-    spotify.skipToPrevious().then(() => {
-        console.log("Skipped to Previous")
-    })
-}
-
- 
-
+        spotify.skipToPrevious().then(() => {
+            console.log("Skipped to Previous")
+        })
+    }
 
 
     return (
