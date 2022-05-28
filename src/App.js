@@ -66,7 +66,7 @@ function App() {
   
   }, [])
 
-  console.log({user, token_, playlists, discover_weekly},)
+  console.log({user, token_, playlists, discover_weekly, currently_playing},)
 
   return (
     <>

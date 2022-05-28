@@ -7,17 +7,22 @@ import RepeatIcon from '@mui/icons-material/Repeat';
 import { Grid, Slider, Box } from "@material-ui/core"
 import PlaylistPlayIcon from '@mui/icons-material/PlaylistPlay';
 import VolumeDownIcon from '@mui/icons-material/VolumeDown';
+import { useDataLayerValue } from "../../Datalayer";
 
 
 const Footer = () => {
+const [{currently_playing}, dispatch] = useDataLayerValue()
+
     return (
         <div className="footer">
             <div className="footer-left">
-                < img src="https://www.okayplayer.com/wp-content/uploads/2022/05/kendrick-lamar-mr-morale-and-the-big-steppers-album-cover.jpeg" alt="" />
+
+                
+                < img src={currently_playing?.item?.album.images[0].url} alt="" />
                
                <div className="footer-left-songInfo">
-                    <h4> Yeah !</h4>
-                    <p> Drake</p>
+                    <h4> { currently_playing?.item?.name} </h4>
+                    <p>{ currently_playing?.item?.artists.map(artist => artist.name).join(",")} </p>
                </div>
             </div>
 
