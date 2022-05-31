@@ -1,5 +1,5 @@
 const client_id = '96df458142bc476e8b0f5e987369b0e9'
-const redirect_uri = "http://localhost:3000/callback"
+const redirect_uri = "https://vercel.com/nnajichimuanya/spotify-clone/4wLw9TmcdoHnadUViiamLNBES6rd/callback"
 const scope = [
     "user-read-currently-playing",
     "user-read-recently-played",
